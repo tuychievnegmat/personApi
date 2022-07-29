@@ -9,10 +9,10 @@ import javax.validation.constraints.Size;
 
 @Data
 public class DtoLoginPassword {
-    @Size(min = 8, max = 16)
+    @Size(min = 6, max = 16)
     @NotBlank
     private String username;
-    @Size(min = 8, max = 16)
+    @Size(min = 6, max = 16)
     @NotBlank
     private String password;
 }

@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNullApi;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,13 +26,14 @@ import java.util.Map;
 // заглушки будут использоваться методы создания и проверки.
 // нужно реализовать security authorithation проверку
 @RestController
+@Validated
 public class PersonController {
    @Autowired
    private PersonRepository personRepository;
 
     @PostMapping("/create")
     public ResponseEntity<String> createUser(
-            @RequestBody DtoLoginPassword usernameEndPassword
+            @Valid @RequestBody  DtoLoginPassword usernameEndPassword
     ){
         Person user = personRepository.findPerosonByUsername(usernameEndPassword.getUsername());
         if (user != null){
@@ -51,7 +54,7 @@ public class PersonController {
 
     @GetMapping("/getUser")
     @ResponseBody
-    public DtoPerson getUser(@RequestParam String username){
+    public DtoPerson getUser(@RequestParam  @Valid String username){
         return personRepository.findPerosonByUsername(username).toPersonDto();
     }
 

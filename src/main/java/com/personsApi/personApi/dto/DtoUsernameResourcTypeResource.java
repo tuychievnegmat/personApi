@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 @Data
 public class DtoUsernameResourcTypeResource {
     @NotBlank
-    @Size(min = 8, max = 16)
+    @Size(min = 6, max = 16)
     private String username;
     @NotBlank
     private String resourceType;

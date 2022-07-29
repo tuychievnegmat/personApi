@@ -10,7 +10,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 public class DtoPerson {
-    @Size(min = 8, max = 16)
+    @Size(min = 6, max = 16)
     @NotBlank
     private String username;
     @NotEmpty
